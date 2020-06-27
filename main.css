@@ -1,0 +1,41 @@
+* {
+    background-color: #f6f6f6;
+    font-family: Open Sans;
+  }
+  
+  section {
+    height: 300px;
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 100px;
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 25px;
+  }
+  #answers {
+    text-align: left;
+  }
+  #answers, #answers li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  
+  #score {
+    list-style: none; 
+  }
+  
+  button {
+    margin-top:10px;
+    height: auto;
+    font-size: 14px;
+    text-align: center;
+    color:black;
+    background: lightgrey;
+    border: 0;
+    margin-bottom: 0;
+    border-radius:3px;
+    padding: 10px 20px;
+  }
+  
+  
