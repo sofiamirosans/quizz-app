@@ -1,41 +1,89 @@
 * {
-    background-color: #f6f6f6;
-    font-family: Open Sans;
-  }
-  
-  section {
-    height: 300px;
-    width: 600px;
-    margin: 0 auto;
-    margin-top: 100px;
-    border: 1px solid #ccc;
-    text-align: center;
-    padding: 25px;
-  }
-  #answers {
-    text-align: left;
-  }
-  #answers, #answers li {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
-  
-  #score {
-    list-style: none; 
-  }
-  
-  button {
-    margin-top:10px;
-    height: auto;
-    font-size: 14px;
-    text-align: center;
-    color:black;
-    background: lightgrey;
-    border: 0;
-    margin-bottom: 0;
-    border-radius:3px;
-    padding: 10px 20px;
-  }
-  
-  
+  background-color: #f6f6f6;
+}
+
+section {
+  position: relative;
+  height: 380px;
+  width: 680px;
+  margin: 0 auto;
+  margin-top: 100px;
+  border: 1px solid #ccc;
+  text-align: center;
+  padding: 25px;
+}
+
+img {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 200px;
+  width: 280x;
+  margin-bottom: 10px;
+}
+
+h3, p {
+margin-top: 20px;
+}
+
+h3 {
+  font-family: 'open sans', sans-serif;
+  font-weight: 600;
+}
+
+p, #current, #total, #score {
+  font-family: 'open sans', sans serif;
+}
+
+#question {
+  font-weight: 600;
+  margin-bottom: 50px;
+}
+
+button {
+  margin: auto;
+  padding: 10px;
+  position: relative;
+  align-content: center;
+}
+
+#answers {
+  text-align: left;
+}
+#answers, #answers li {
+  margin: 10px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  list-style: none;
+}
+
+#current, #total, #score {
+  list-style: none; 
+}
+
+.submit, .restart {
+margin-top: 70px;
+margin-bottom: 30px;
+}
+
+.submit {
+margin-right: 3px;
+}
+
+.restart {
+margin-left: 3px;
+}
+
+button {
+  font-family: 'Roboto', Sans-Serif;
+  margin-top:10px;
+  height: auto;
+  font-size: 14px;
+  color:black;
+  background: lightgrey;
+  border: 0;
+  margin-bottom: 0;
+  border-radius:3px;
+  padding: 10px 20px;
+}
