@@ -87,3 +87,97 @@ button {
   border-radius:3px;
   padding: 10px 20px;
 }
+
+@media only screen and (max-width: 500px) {
+section {
+  position: relative;
+  justify-content: center;
+  height: 210px;
+  width: 360px;
+  margin: 0 auto;
+  margin-top: 30px;
+  border: 1px solid #ccc;
+  text-align: center;
+  padding: 15px;
+}
+
+img {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100px;
+  width: 140px;
+  margin-bottom: 5px;
+}
+
+h3, p {
+margin-top: 5px;
+}
+
+h3 {
+  font-family: 'open sans', sans-serif;
+  font-weight: 600;
+  font-size: 12pt;
+}
+
+p, #current, #total, #score {
+  font-family: 'open sans', sans serif;
+  font-size: 10pt;
+}
+
+#question {
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+button {
+  margin: auto;
+  padding: 5px;
+  position: relative;
+  align-content: center;
+  font-size: 8pt;
+}
+
+#answers {
+  text-align: left;
+  font-size: 10pt;
+}
+#answers, #answers li {
+  margin: 5px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  list-style: none;
+}
+
+#current, #total, #score {
+  list-style: none; 
+  font-size: 10pt;
+}
+
+.submit, .restart {
+margin-top: 10px;
+margin-bottom: 10px;
+}
+
+.submit {
+margin-right: 3px;
+}
+
+.restart {
+margin-left: 3px;
+}
+
+button {
+  font-family: 'Roboto', Sans-Serif;
+  margin-top:10px;
+  height: auto;
+  font-size: 10px;
+  color:black;
+  background: lightgrey;
+  border: 0;
+  margin-bottom: 0;
+  border-radius:1.5px;
+  padding: 5px 10px;
+}
+}
