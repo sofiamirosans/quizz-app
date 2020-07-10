@@ -44,82 +44,108 @@ const STORE = [{
   ],
   CorrectAnswer: 2
 }];
-const Progress = {
-  currentQuestion: -1,
-  score: 0
-};
 
-//starts quizz, guiding the user to the first question 
-function startQuizz() {
+let score = 0;
+let questionNum = -1;
+
+function renderQuizz() {
   $("#progress, #results").hide();
+}
+
+function clickStart() {
   $("#start button").click(function () {
+    questionNum++;
+    renderQuestion();
     $("#total").text(STORE.length);
     $("#start").hide();
-    nextQuestion();
     $("#progress").show();
   });
+}
+
+function renderQuestion() {
+  $("#current").text(questionNum + 1);
+  $("#score").text(score);
+  $("#question").text(STORE[questionNum].Question);
+  $("#answers").html(getQuestionHtml());
+}
+
+function getQuestionHtml() {
+  return STORE[questionNum].Answers.map(function (answer, id) {
+    return `<li><label><input type="radio" name="answer" value="${id}" /> ${answer}</label></li>`;
+  });
+}
+
+function submitQuestion() {
   $(".submit").click(function () {
     nextQuestion();
   });
 }
 
-function renderQuestion() {
-  $("#current").text(Progress.currentQuestion + 1);
-  $("#score").text(Progress.score);
-  $("#question").text(STORE[Progress.currentQuestion].Question);
-  $("#answers").html(STORE[Progress.currentQuestion].Answers.map(function (answer, id) {
-    return `<li><label><input type="radio" name="answer" value="${id}" /> ${answer}</label></li>`;
-  }));
+function correctAnswer() {
+  alert("Correct!");
+  updateScore();
 }
 
-function showResults() {
-  $("#progress").hide();
-  $("#corAns").text(Progress.score);
-  $("#totAns").text(STORE.length);
-  $("#results").show();
+function wrongAnswer(curQue) {
+  alert("Wrong! Correct answer is " + curQue.Answers[curQue.CorrectAnswer]);
 }
 
-function nextQuestion() {
-  if (Progress.currentQuestion > -1) {
-    if ($('[name="answer"]:checked').length === 1) {
-      const selId = $('[name="answer"]:checked').val();
-      const curQue = STORE[Progress.currentQuestion];
-      // alert("Given Option: " + curQue.Answers[selId]);
-      if (curQue.CorrectAnswer == selId) {
-        alert("Correct!");
-        Progress.score++;
-      } else {
-        alert("Wrong!");
-        alert("Correct answer is " + curQue.Answers[curQue.CorrectAnswer]);
-      }
-      Progress.currentQuestion++;
-      if (STORE.length - 1 < Progress.currentQuestion) {
-        showResults();
-      } else {
-        renderQuestion();
-      }
-    } else {
-      alert("Please select an answer.");
-    }
+function answerSelected() {
+  const selId = $('[name="answer"]:checked').val();
+  const curQue = STORE[questionNum];
+  if (curQue.CorrectAnswer == selId) {
+    correctAnswer();
   } else {
-    Progress.currentQuestion++;
+    wrongAnswer(curQue);
+  }
+  updateQuestionNum();
+  if (STORE.length - 1 < questionNum) {
+    showResults();
+  } else {
     renderQuestion();
   }
 }
 
-//restarts quizz 
+function nextQuestion() {
+  if (questionNum > -1) {
+    if ($('[name="answer"]:checked').length === 1) {
+      answerSelected();
+    } else {
+      alert("Please select an answer.");
+    }
+  } else {
+    updateQuestionNum();
+    renderQuestion();
+  }
+}
+
+function updateQuestionNum() {
+  questionNum++;
+}
+
+function updateScore() {
+  score++;
+}
+
+function showResults() {
+  $("#progress").hide();
+  $("#corAns").text(score);
+  $("#totAns").text(STORE.length);
+  $("#results").show();
+}
+
 function restartQuizz() {
   $(".restart").click(function () {
-    Progress.currentQuestion = -1;
-    Progress.score = 0;
+    questionNum = -1;
+    score = 0;
     $("#start").show();
     $("#progress, #results").hide();
   });
 }
 
-function handleQuizz() {
-  startQuizz();
+$(function () {
+  renderQuizz();
+  clickStart();
+  submitQuestion();
   restartQuizz();
-}
-
-handleQuizz();
+});
